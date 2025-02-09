@@ -25,9 +25,7 @@ SECRET_KEY = "django-insecure-_@vdq#=!^1b$t*ds+_2bhz(h@^ji9xtt(5k_b4%w(5bpru@b@4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
+ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,8 +37,18 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.gis",
     'mapping',
+    'leaflet',
 ]
 
+LEAFLET_CONFIG = {
+    'DEFAULT_CENTER': (0.0, 0.0),
+    'DEFAULT_ZOOM': 2,
+    'MIN_ZOOM': 2,
+    'MAX_ZOOM': 18,
+    'TILES': [('OpenStreetMap', 
+              'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+              {'attribution': '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'})],
+}
 MAP_WIDGETS = {
     "GooglePointFieldWidget": (
         ("zoom", 15),
@@ -63,7 +71,7 @@ ROOT_URLCONF = "mapp.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, 'templates')],  # Add this line
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

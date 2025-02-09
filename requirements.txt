@@ -19,3 +19,4 @@ whitenoise          # Static file serving
 
 # Development Tools
 python-dotenv       # Local environment management
+django-leaflet
