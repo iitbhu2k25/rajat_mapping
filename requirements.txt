@@ -1,22 +1,46 @@
-# Django & Core Dependencies
-Django                # Core framework
-django-environ        # Environment variable management
-djangorestframework  # For REST API
-django-cors-headers  # Handle CORS
-django-leaflet       # For map integration
+# Django & Django-related
+Django
+djangorestframework
+django-extensions
+django-leaflet
+django-debug-toolbar
+django-cors-headers
+django-environ
 
-# Database & GeoDjango Dependencies
-psycopg2-binary     # PostgreSQL adapter              # Required for GeoDjango
-geopandas           # For geospatial data handling
-geojson             # GeoJSON support
-shapely             # Geometric operations
+# Database
+psycopg2-binary
 sqlalchemy
+
+geopandas
+geojson
+shapely
+gsconfig-py3
+
+# Data Science & ML
+pandas
 scikit-learn
 
-# Production Dependencies
-gunicorn            # Production server
-whitenoise          # Static file serving
+# Development & Debug Tools
+python-dotenv
+python-decouple
+requests
+gunicorn
+ipdb
+pygments
+whitenoise
 
-# Development Tools
-python-dotenv       # Local environment management
-django-leaflet
+# Testing
+pytest
+pytest-django
+pytest-cov
+factory-boy
+faker
+
+# Code Quality
+black
+flake8
+mypy
+
+# Monitoring & Error Tracking
+sentry-sdk
+
