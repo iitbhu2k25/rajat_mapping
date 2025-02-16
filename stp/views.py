@@ -22,7 +22,6 @@ def stp_home(request):
 def GetStatesView(request):
     states=State.objects.values('state_id','state_name')
     states=[{'id': state['state_id'],'name':state['state_name']} for state in states]
-    print(states)
     return JsonResponse(list(states),safe=False)
 
 @csrf_exempt
@@ -31,26 +30,22 @@ def GetDistrictView(request):
         state_id=int(json.loads(request.body).get('state'))
         districts=District.objects.values('district_id','district_name').filter(state_id=state_id)
         districts=[{'id': district['district_id'],'name':district['district_name']} for district in districts]
-        print(districts)
         return JsonResponse(list(districts),safe=False)
 @csrf_exempt
 def GetSubDistrictView(request):
     if request.method == 'POST':
-        print(request.body)
         district_id=(json.loads(request.body).get('districts'))
-        print(district_id)
         sub_districts=list(Sub_district.objects.values('subdistrict_id','subdistrict_name').filter(district_id__in=district_id))
-        print("noiew outou us ",sub_districts)
         sub_districts=[{'id': sub_district['subdistrict_id'],'name':sub_district['subdistrict_name']} for sub_district in sub_districts]
-        print("sub_districts",sub_districts)
         return JsonResponse(list(sub_districts),safe=False)
-        
-        pass
 
 @csrf_exempt
 def  GetVillageView(request):
     if request.method == 'POST':
-        pass
+        sub_district_id=(json.loads(request.body).get('subDistricts'))
+        villages=list(Villages.objects.values('village_id','village_name').filter(subdistrict_id_id__in=sub_district_id))
+        villages=[{'id': village['village_id'],'name':village['village_name']} for village in villages]
+        return JsonResponse(list(villages),safe=False)
 
 @csrf_exempt
 def GetTableView(request):
